@@ -30,11 +30,6 @@ class Home extends Component {
         weatherIcon: `wi wi-day-${iconJSON[res.data.weather[0].id].icon}`
       })
     })
-
-    axios.get(urlPrefix + "forecast" + "/daily?" + location + units + apiKey)
-    .then( res => {
-      console.log(res, "FORECAST");
-    })
   }
 
   render() {
