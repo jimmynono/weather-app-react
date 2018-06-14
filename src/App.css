@@ -30,6 +30,7 @@ p {
   background-color: #507381;
   height: auto;
   padding: 20px;
+  padding-top: 50px;
   color: white;
 }
 
@@ -71,7 +72,19 @@ p {
   margin: 0 10em;
 }
 
+@media screen and (max-width: 1024px) {
+
+  .five-day-forecast,
+  .current-temp {
+    margin: 0 4em;
+  }
+}
+
 @media screen and (max-width: 768px) {
+  .App-header {
+    padding-top: 30px;
+  }
+
   .App-title {
     margin-bottom: 0;
   }
@@ -84,6 +97,10 @@ p {
     width: 100%;
   }
 
+  .current-temperature {
+    margin: 0.75em;
+  }
+
   .current-temp,
   .forecast-card {
     border-bottom: 1px solid #507381;
@@ -92,13 +109,5 @@ p {
 
   .forecast-card:last-child {
     border-bottom: none;
-  }
-}
-
-@media screen and (max-width: 1024px) {
-
-  .five-day-forecast,
-  .current-temp {
-    margin: 0 4em;
   }
 }
