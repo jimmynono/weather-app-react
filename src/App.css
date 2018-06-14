@@ -3,9 +3,23 @@
   font-family: 'Exo', sans-serif;
 }
 
+p {
+  font-size: 2em;
+}
+
+.current-temperature {
+  font-size: 4em;
+  line-height: .5;
+}
+
+.wi {
+  font-size: 3em;
+}
+
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
   font-size: 80px;
+  color: yellow;
 }
 
 .App-logo:before {
@@ -13,21 +27,78 @@
 }
 
 .App-header {
-  background-color: #222;
-  height: 150px;
+  background-color: #507381;
+  height: auto;
   padding: 20px;
   color: white;
 }
+
+.App-header h1 {
+  font-size: 3em;
+}
+
 
 .App-title {
   font-size: 1.5em;
 }
 
-.App-intro {
-  font-size: large;
-}
-
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+
+.current-temp {
+  border-bottom: 1px solid #507381;
+  margin: 0 10em
+}
+
+.forecast-card {
+  flex-grow: 1;
+  flex-basis: 0;
+}
+
+.forecast-card p {
+  line-height: .75;
+  font-size: 1em;
+}
+
+.five-day-forecast {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  margin: 0 10em;
+}
+
+@media screen and (max-width: 768px) {
+  .App-title {
+    margin-bottom: 0;
+  }
+  .five-day-forecast {
+    flex-direction: column;
+    margin: 0 2em;
+  }
+
+  .forecast-card {
+    width: 100%;
+  }
+
+  .current-temp,
+  .forecast-card {
+    border-bottom: 1px solid #507381;
+    margin: 0 2em;
+  }
+
+  .forecast-card:last-child {
+    border-bottom: none;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+
+  .five-day-forecast,
+  .current-temp {
+    margin: 0 4em;
+  }
 }

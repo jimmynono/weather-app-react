@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import CurrentWeather from './current-weather';
+import FiveDayForecast from './five-day-forecast';
 import iconJSON from '../assets/icons.json';
 
 class Home extends Component {
@@ -23,12 +24,12 @@ class Home extends Component {
 
     axios.get(urlPrefix + "weather?" + location + units + apiKey)
     .then(res => {
-      console.log(res, "CURRENT");
-
       this.setState({
         isLoaded: true,
-        currentTemp: res.data.main.temp,
+        currentTemp: Math.round(res.data.main.temp),
         cityName: res.data.name,
+        lowTemp: Math.round(res.data.main.temp_min),
+        highTemp: Math.round(res.data.main.temp_max),
         weatherIcon: `wi wi-day-${iconJSON[res.data.weather[0].id].icon}`
       })
     })
@@ -36,7 +37,6 @@ class Home extends Component {
     axios.get(urlPrefix + "forecast?" + location + units + apiKey)
     .then( res => {
       const forecastDays = this.forecastBuilder(res.data);
-      console.log(forecastDays, "FD");
       this.setState({
         forecastDays: forecastDays
       })
@@ -44,40 +44,38 @@ class Home extends Component {
   }
 
   forecastBuilder(res) {
-    console.log(res.list, "HERE");
     const days = [
       {
         lowTemp: null,
         highTemp: null,
         rainChance: null,
-
+        icon: null
       },
       {
         lowTemp: null,
         highTemp: null,
         rainChance: null,
-
+        icon: null
       },
       {
         lowTemp: null,
         highTemp: null,
         rainChance: null,
-
+        icon: null
       },
       {
         lowTemp: null,
         highTemp: null,
         rainChance: null,
-
+        icon: null
       },
       {
         lowTemp: null,
         highTemp: null,
         rainChance: null,
-
+        icon: null
       }
     ];
-
 
     for (let i = 0; i < days.length; i++) {
       let temperatureLow = 9999;
@@ -104,17 +102,26 @@ class Home extends Component {
       days[i].lowTemp = temperatureLow;
       days[i].highTemp = temperatureHigh;
       days[i].rainChance = (chancerain / 8);
+      days[i].icon =`wi wi-day-${iconJSON[res.list[i + 5].weather[0].id].icon}`;
     }
 
     return days;
   }
 
   render() {
-    const { currentTemp, cityName, weatherIcon, forecastDays } = this.state;
+    const {
+        currentTemp,
+        cityName,
+        weatherIcon,
+        lowTemp,
+        highTemp,
+        forecastDays
+      } = this.state;
 
     return (
       <div>
-        <CurrentWeather currentTemp={currentTemp} cityName={cityName} icon={weatherIcon}/>
+        <CurrentWeather currentTemp={currentTemp} cityName={cityName} icon={weatherIcon} lowTemp={lowTemp} highTemp={highTemp} />
+        <FiveDayForecast forecastData={forecastDays} />
       </div>
     );
   }
