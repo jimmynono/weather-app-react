@@ -36,6 +36,7 @@ class Home extends Component {
 
     axios.get(urlPrefix + "forecast?" + location + units + apiKey)
     .then( res => {
+      console.log(res.data);
       const forecastDays = this.forecastBuilder(res.data);
       this.setState({
         forecastDays: forecastDays
@@ -77,32 +78,34 @@ class Home extends Component {
       }
     ];
 
+    let count = 0;
+
     for (let i = 0; i < days.length; i++) {
       let temperatureLow = 9999;
       let temperatureHigh = -9999;
       let chancerain = 0;
 
-      for (let j = 0; j < i + 8; j++) {
+      for (let j = 0; j < 8; j++) {
 
-        if (res.list[j + i].rain !== undefined) {
-          if (chancerain < res.list[j + i].rain['3h']) {
-            chancerain = res.list[j + i].rain['3h']
+        if (typeof res.list[count].rain) {
+          if (chancerain < res.list[count].rain['3h']) {
+            chancerain = res.list[count].rain['3h']
           };
         }
 
-        if (temperatureLow > res.list[j + i].main.temp) {
-          temperatureLow = res.list[j + i].main.temp
+        if (temperatureLow > res.list[count].main.temp) {
+          temperatureLow = res.list[count].main.temp
         }
 
-        if (temperatureHigh < res.list[j + i].main.temp) {
-          temperatureHigh = res.list[j + i].main.temp
+        if (temperatureHigh < res.list[count].main.temp) {
+          temperatureHigh = res.list[count].main.temp
         }
+        count++;
       }
-
       days[i].lowTemp = temperatureLow;
       days[i].highTemp = temperatureHigh;
       days[i].rainChance = (chancerain / 8);
-      days[i].icon =`wi wi-day-${iconJSON[res.list[i + 5].weather[0].id].icon}`;
+      days[i].icon =`wi wi-day-${iconJSON[res.list[4 + (8 * i)].weather[0].id].icon}`;
     }
 
     return days;
