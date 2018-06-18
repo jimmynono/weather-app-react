@@ -87,7 +87,7 @@ class Home extends Component {
 
       for (let j = 0; j < 8; j++) {
 
-        if (typeof res.list[count].rain) {
+        if (typeof res.list[count].rain !== 'undefined') {
           if (chancerain < res.list[count].rain['3h']) {
             chancerain = res.list[count].rain['3h']
           };
