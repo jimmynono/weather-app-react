@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import '../styles/weather-icons.css';
 
 class CurrentWeather extends Component {
 
   render() {
-    const { cityName, currentTemp, icon, lowTemp, highTemp } = this.props;
+    const { cityName, currentTemp, icon, lowTemp, highTemp, cityId, showButton } = this.props;
 
     return(
       <div className="current-temp">
@@ -14,6 +15,7 @@ class CurrentWeather extends Component {
           <span className={icon}></span>
           <p>HIGH: {highTemp}&deg;</p>
           <p>LOW: {lowTemp}&deg;</p>
+          {showButton && <Link to={`/details/${cityId}`}><button>Details...</button></Link>}
       </div>
     )
   }

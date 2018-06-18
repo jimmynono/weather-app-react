@@ -7,6 +7,14 @@ p {
   font-size: 2em;
 }
 
+button {
+  font-family: 'Exo', sans-serif;
+  border: 1px solid black;
+  border-radius: 30px;
+  font-size: 1em;
+  padding: 2px 14px 4px;
+}
+
 .current-temperature {
   font-size: 4em;
   line-height: .5;
@@ -50,7 +58,8 @@ p {
 
 .current-temp {
   border-bottom: 1px solid #507381;
-  margin: 0 10em
+  margin: 0 10em;
+  padding: 2em;
 }
 
 .forecast-card {

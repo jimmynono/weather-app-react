@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import CurrentWeather from './current-weather';
 import FiveDayForecast from './five-day-forecast';
+import HourlyForecast from './hourly-forecast';
 import iconJSON from '../helpers/icons.json';
 import forecastBuilder from '../helpers/utils.js';
 
-class Home extends Component {
+class CityDetails extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -23,7 +24,6 @@ class Home extends Component {
 
     axios.get(urlPrefix + "weather?" + location + units + apiKey)
     .then(res => {
-      console.log(res);
       this.setState({
         isLoaded: true,
         currentTemp: Math.round(res.data.main.temp),
@@ -39,7 +39,8 @@ class Home extends Component {
     .then( res => {
       const forecastDays = forecastBuilder(res.data, iconJSON);
       this.setState({
-        forecastDays: forecastDays
+        forecastDays: forecastDays,
+        hourlyData: res.data.list
       })
     })
   }
@@ -52,16 +53,19 @@ class Home extends Component {
         lowTemp,
         highTemp,
         forecastDays,
-        cityId
+        cityId,
+        hourlyData
       } = this.state;
 
     return (
       <div>
-        <CurrentWeather currentTemp={currentTemp} cityName={cityName} icon={weatherIcon} lowTemp={lowTemp} highTemp={highTemp} cityId={cityId} showButton={true} />
+        <h1>Welcome! Everything is fine</h1>
+        <CurrentWeather currentTemp={currentTemp} cityName={cityName} icon={weatherIcon} lowTemp={lowTemp} highTemp={highTemp} cityId={cityId} />
         <FiveDayForecast forecastData={forecastDays} />
+        <HourlyForecast hourlyData={hourlyData}/>
       </div>
     );
   }
 }
 
-export default Home
+export default CityDetails

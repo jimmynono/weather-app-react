@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import './App.css';
 import Home from './components/home';
-import Header from './components/header'
+import Header from './components/header';
+import CityDetails from './components/city-details';
 
 class App extends Component {
 
@@ -13,6 +14,7 @@ class App extends Component {
           <div className="App">
             <Header />
             <Route exact path="/" component={Home} />
+            <Route path="/details/:id" component={CityDetails} />
           </div>
         </Router>
       );
