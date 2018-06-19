@@ -4,6 +4,7 @@ import './App.css';
 import Home from './components/home';
 import Header from './components/header';
 import CityDetails from './components/city-details';
+import store from './store';
 
 class App extends Component {
 
@@ -12,7 +13,7 @@ class App extends Component {
       return (
         <Router>
           <div className="App">
-            <Header />
+            <Header store={store}/>
             <Route exact path="/" component={Home} />
             <Route path="/details/:id" component={CityDetails} />
           </div>
