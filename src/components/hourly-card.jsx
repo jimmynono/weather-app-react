@@ -11,23 +11,34 @@ class HourlyCard extends Component {
 
   formatTime(timeStamp) {
     const offset = moment().utcOffset();
-    const time = moment.utc(timeStamp).utcOffset(offset).format("L LT")
+    const time = moment.utc(timeStamp).utcOffset(offset).format("dddd h a")
     return time;
   }
 
   render() {
-    const { dt_txt} = this.props
+    console.log(this.props);
+    const { dt_txt,
+            main: {
+              temp,
+              humidity,
+              pressure
+            },
+            wind: {
+              speed,
+              deg
+            }
+          } = this.props
 
     const iconClass = `wi wi-day-${iconJSON[this.props.weather[0].id].icon}`;
-
 
     return (
       <div>
         <h2>{this.formatTime(dt_txt)}</h2>
-        <p>Temp: {Math.round(this.props.main.temp)}&deg;</p>
+        <p>Temp: {Math.round(temp)}&deg;</p>
         <span className={iconClass}></span>
-        <p>Humidity: {this.props.main.humidity}%</p>
-        <p>Barometric Pressure: {this.props.main.pressure} hPa</p>
+        <p>Humidity: {humidity}%</p>
+        <p>Barometric Pressure: {pressure} hPa</p>
+        <p>Wind: {speed} mph {Math.round(deg)}&deg;</p>
       </div>
     )
   }

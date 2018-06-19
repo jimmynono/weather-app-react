@@ -59,7 +59,6 @@ class CityDetails extends Component {
 
     return (
       <div>
-        <h1>Welcome! Everything is fine</h1>
         <CurrentWeather currentTemp={currentTemp} cityName={cityName} icon={weatherIcon} lowTemp={lowTemp} highTemp={highTemp} cityId={cityId} />
         <FiveDayForecast forecastData={forecastDays} />
         <HourlyForecast hourlyData={hourlyData}/>
