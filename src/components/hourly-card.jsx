@@ -32,13 +32,19 @@ class HourlyCard extends Component {
     const iconClass = `wi wi-day-${iconJSON[this.props.weather[0].id].icon}`;
 
     return (
-      <div>
-        <h2>{this.formatTime(dt_txt)}</h2>
-        <p>Temp: {Math.round(temp)}&deg;</p>
-        <span className={iconClass}></span>
-        <p>Humidity: {humidity}%</p>
-        <p>Barometric Pressure: {pressure} hPa</p>
-        <p>Wind: {speed} mph {Math.round(deg)}&deg;</p>
+      <div className="hourly-card">
+        <div className="hourly-card-time-icon">
+          <h2>{this.formatTime(dt_txt)}</h2>
+          <span className={iconClass}></span>
+        </div>
+        <div className="hourly-card-temp">
+          <p>{Math.round(temp)}&deg;</p>
+        </div>
+        <div className="hourly-card-data">
+          <p>Humidity: {humidity}%</p>
+          <p>Barometric Pressure: {pressure} hPa</p>
+          <p>Wind: {speed} mph {Math.round(deg)}&deg;</p>
+        </div>
       </div>
     )
   }

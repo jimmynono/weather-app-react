@@ -77,8 +77,42 @@ button {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-
   margin: 0 10em;
+  border-bottom: 1px solid #507381;
+}
+
+.hourly-forecast {
+  margin-top: 2em;
+}
+
+.hourly-card {
+  width: 50%;
+  margin: 0 auto;
+  border: 1px solid #507381;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0 2em;
+}
+
+
+.hourly-card-time-icon h2 {
+  margin-top: 0;
+}
+
+.hourly-card-time-icon,
+.hourly-card-temp,
+.hourly-card-data {
+  margin: 0 1em;
+  flex-basis: 33%;
+}
+
+.hourly-card p {
+  font-size: 1em;
+}
+
+.hourly-card-temp {
+  font-size: 3em;
 }
 
 @media screen and (max-width: 1024px) {
@@ -114,6 +148,37 @@ button {
   .forecast-card {
     border-bottom: 1px solid #507381;
     margin: 0 2em;
+  }
+
+  .hourly-card {
+    width: 95%;
+    padding: 0;
+    border-left: none;
+    border-right: none;
+    flex-wrap: wrap;
+
+  }
+
+  .hourly-card:first-of-type {
+    border-top: none;
+  }
+
+  .hourly-card-time-icon,
+  .hourly-card-temp {
+    margin: 0;
+  }
+
+  .hourly-card-time-icon {
+    flex-basis: 60%;
+  }
+
+  .hourl-card-temp {
+    flex-basis: 40%;
+  }
+
+  .hourly-card-data {
+    height: 0;
+    display: none;
   }
 
   .forecast-card:last-child {
