@@ -2,50 +2,21 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 class Header extends Component {
-  constructor() {
-    super();
-
-    this.state = {
-      showInput: false,
-      value: ''
-    }
-
-    this.handleLoginClick = this.handleLoginClick.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleChange = this.handleChange.bind(this);
-  }
-
-  handleLoginClick(e) {
-    e.preventDefault();
-    this.setState({
-      showInput: true
-    })
-  }
-
-  handleChange(event) {
-    this.setState({value: event.target.value});
-  }
-
-  handleSubmit(event) {
-    event.preventDefault();
-    // redux codes
-  }
 
   render () {
     return (
       <header className="App-header">
         <div className="App-header-user-info">
-          {this.props.user && <h2>Welcome: {this.props.user}</h2>}
-          {!this.props.user && <h2>Login Please</h2>}
-          {this.state.showInput && <form onSubmit={this.handleSubmit}>
+          {this.props.userName && <h2>Welcome: {this.props.userName}</h2>}
+          {!this.props.userName && <h2>Login Please</h2>}
+          {this.props.showInput  && <form onSubmit={this.props.submit}>
             <label>
               Name:
-              <input type="text" value={this.state.value} onChange={this.handleChange} />
+              <input value={this.props.inputValue || ''} onChange={this.props.inputChanged} />
             </label>
-            <input type="submit" value="Submit" />
           </form>}
-          {!this.props.user && <button onClick={this.handleLoginClick}>LOGIN</button>}
-          {this.props.user && <button onClick={this.props.onLogoutClick}>LOGOUT</button>}
+          {!this.props.userName && <button onClick={this.props.onLoginClick}>LOGIN</button>}
+          {this.props.userName && <button onClick={this.props.onLogoutClick}>LOGOUT</button>}
         </div>
         <div className="App-header-logo">
           <span className="wi wi-day-sunny App-logo" alt="logo" />
@@ -58,7 +29,10 @@ class Header extends Component {
 
 function mapStateToProps(state) {
   return {
-    user: state.user
+    user: state.user,
+    inputValue: state.inputValue,
+    userName: state.userName,
+    showInput: state.showInput
   }
 }
 
@@ -75,7 +49,22 @@ function mapDispatchToProps(dispatch) {
         type: 'LOGOUT'
       }
       dispatch(action);
+    },
+    inputChanged: (evt) => {
+      const action = {
+        type: 'INPUT_CHANGE',
+        text: evt.target.value
+      }
+      dispatch(action)
+    },
+    submit: (evt) => {
+      evt.preventDefault();
+      const action = {
+        type: 'UPDATE_NAME'
+      }
+      dispatch(action);
     }
+
   }
 }
 
