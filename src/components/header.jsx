@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import constants from '../store/constants';
 
 class Header extends Component {
 
@@ -40,19 +41,19 @@ function mapDispatchToProps(dispatch) {
   return {
     onLoginClick: () => {
       const action = {
-        type: 'LOGIN'
+        type: constants.LOGIN
       }
       dispatch(action);
     },
     onLogoutClick: () => {
       const action = {
-        type: 'LOGOUT'
+        type: constants.LOGOUT
       }
       dispatch(action);
     },
     inputChanged: (evt) => {
       const action = {
-        type: 'INPUT_CHANGE',
+        type: constants.INPUT_CHANGE,
         text: evt.target.value
       }
       dispatch(action)
@@ -60,7 +61,7 @@ function mapDispatchToProps(dispatch) {
     submit: (evt) => {
       evt.preventDefault();
       const action = {
-        type: 'UPDATE_NAME'
+        type: constants.UPDATE_NAME
       }
       dispatch(action);
     }

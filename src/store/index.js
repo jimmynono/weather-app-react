@@ -1,4 +1,5 @@
 import { createStore } from 'redux';
+import constants from './constants';
 
 const initialState = [{
   user: null,
@@ -9,13 +10,13 @@ const initialState = [{
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case 'LOGIN':
+    case constants.LOGIN:
       return Object.assign({}, state, { showInput: true});
-    case 'LOGOUT':
+    case constants.LOGOUT:
       return Object.assign({}, state, { userName: null});
-    case 'INPUT_CHANGE':
+    case constants.INPUT_CHANGE:
       return Object.assign({}, state, { inputValue: action.text });
-    case 'UPDATE_NAME':
+    case constants.UPDATE_NAME:
       return Object.assign({}, state, { userName: state.inputValue,
                                         inputValue: '',
                                         showInput: false

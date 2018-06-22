@@ -4,16 +4,16 @@ import { connect } from 'react-redux';
 class Footer extends Component {
   render() {
     return (
-      <div className="footer">
-        <h1>Hi there {this.props.user}</h1>
-      </div>
+      <footer>
+        <h1>Hi there {this.props.userName}</h1>
+      </footer>
     )
   }
 }
 
 function mapStateToProps(state) {
   return {
-    user: state.user
+    userName: state.userName
   }
 }
 
