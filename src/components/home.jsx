@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+import CityChooser from './city-chooser';
 import CurrentWeather from './current-weather';
 import FiveDayForecast from './five-day-forecast';
-import iconJSON from '../helpers/icons.json';
-import forecastBuilder from '../helpers/utils.js';
+// import forecastBuilder from '../helpers/utils.js';
+import { connect } from 'react-redux';
 
 class Home extends Component {
   constructor(props) {
@@ -15,53 +15,27 @@ class Home extends Component {
     }
   }
 
-  componentDidMount() {
-    const urlPrefix = 'http://api.openweathermap.org/data/2.5/';
-    const apiKey = '&APPID=5276ee07167d5c4e7737138a005c8e83';
-    const units = '&units=imperial';
-    const location = 'id=5809844';
-
-    axios.get(urlPrefix + "weather?" + location + units + apiKey)
-    .then(res => {
-      console.log(res);
-      this.setState({
-        isLoaded: true,
-        currentTemp: Math.round(res.data.main.temp),
-        cityName: res.data.name,
-        lowTemp: Math.round(res.data.main.temp_min),
-        highTemp: Math.round(res.data.main.temp_max),
-        weatherIcon: `wi wi-day-${iconJSON[res.data.weather[0].id].icon}`,
-        cityId: res.data.id
-      })
-    })
-
-    axios.get(urlPrefix + "forecast?" + location + units + apiKey)
-    .then( res => {
-      const forecastDays = forecastBuilder(res.data, iconJSON);
-      this.setState({
-        forecastDays: forecastDays
-      })
-    })
-  }
-
   render() {
     const {
-        currentTemp,
-        cityName,
-        weatherIcon,
-        lowTemp,
-        highTemp,
-        forecastDays,
-        cityId
+        forecastDays
       } = this.state;
 
     return (
       <div>
-        <CurrentWeather currentTemp={currentTemp} cityName={cityName} icon={weatherIcon} lowTemp={lowTemp} highTemp={highTemp} cityId={cityId} showButton={true} />
-        <FiveDayForecast forecastData={forecastDays} />
+        {!this.props.chosenCity && <CityChooser />}
+        {this.props.chosenCity && <div>
+          <CurrentWeather showButton={true} />
+          <FiveDayForecast forecastData={forecastDays} />
+        </div>}
       </div>
     );
   }
 }
 
-export default Home
+function mapStateToProps(state) {
+  return {
+    chosenCity: state.weatherData.name
+  }
+}
+
+export default connect(mapStateToProps)(Home);

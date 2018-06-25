@@ -16,7 +16,6 @@ class HourlyCard extends Component {
   }
 
   render() {
-    console.log(this.props);
     const { dt_txt,
             main: {
               temp,
