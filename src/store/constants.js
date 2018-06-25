@@ -1,0 +1,6 @@
+export default {
+  LOGIN: 'LOGIN',
+  LOGOUT: 'LOGOUT',
+  INPUT_CHANGE: 'INPUT_CHANGE',
+  UPDATE_NAME: 'UPDATE_NAME'
+}
