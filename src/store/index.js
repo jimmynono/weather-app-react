@@ -6,7 +6,7 @@ const initialState = {
   inputValue: '',
   userName: '',
   showInput: false,
-  chosenCity: '',
+  chosenCity: 'Boston',
   weatherData: {
     id: '',
     cityName: '',
@@ -39,6 +39,8 @@ const reducer = (state = initialState, action) => {
       return Object.assign({}, state, { cityInputValue: action.text });
     case constants.UPDATE_CITY_NAME:
       return Object.assign({}, state, { weatherData: action.weatherData });
+    case constants.CITY_FORECAST:
+      return Object.assign({}, state, {forecastInfo: action.forecastData})
     default:
       return state;
   }
