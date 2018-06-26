@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import '../styles/weather-icons.css';
 import { connect } from 'react-redux';
 import iconJSON from '../helpers/icons';
+import Proptypes from 'prop-types';
 
 class CurrentWeather extends Component {
   render() {
@@ -39,6 +40,15 @@ function mapStateToProps(state) {
     icon: state.weatherData.weather[0].id,
     cityId: state.weatherData.id
   }
+}
+
+CurrentWeather.propTypes = {
+  cityName: Proptypes.string,
+  currentTemp: Proptypes.number,
+  highTemp: Proptypes.number,
+  lowTemp: Proptypes.number,
+  icon: Proptypes.number,
+  cityId: Proptypes.number
 }
 
 export default connect(mapStateToProps)(CurrentWeather);

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import moment from 'moment';
+import Proptypes from 'prop-types';
 
 class ForecastCard extends Component {
   constructor(props) {
@@ -41,6 +42,14 @@ class ForecastCard extends Component {
       </div>
     )
   }
+}
+
+ForecastCard.propTypes = {
+  lowTemp: Proptypes.number,
+  highTemp: Proptypes.number,
+  rainChance: Proptypes.number,
+  icon: Proptypes.string,
+  index: Proptypes.string,
 }
 
 export default ForecastCard;

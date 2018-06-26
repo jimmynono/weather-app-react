@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import Proptypes from 'prop-types';
 
 class Footer extends Component {
   render() {
@@ -18,6 +19,10 @@ function mapStateToProps(state) {
   return {
     userName: state.userName
   }
+}
+
+Footer.propTypes = {
+  userName: Proptypes.string
 }
 
 export default connect(mapStateToProps)(Footer);

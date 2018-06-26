@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import constants from '../store/constants';
+import Proptypes from 'prop-types';
 
 class Header extends Component {
   render () {
@@ -77,6 +78,17 @@ function mapDispatchToProps(dispatch) {
     }
 
   }
+}
+
+Header.propTypes = {
+  user: Proptypes.string,
+  inputValue: Proptypes.string,
+  userName: Proptypes.string,
+  showInput: Proptypes.bool,
+  onLoginClick: Proptypes.func,
+  onLogoutClick: Proptypes.func,
+  inputChanged: Proptypes.func,
+  submit: Proptypes.func
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);

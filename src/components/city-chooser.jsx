@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import constants from '../store/constants';
 import Api from '../helpers/api';
+import Proptypes from 'prop-types';
 
 class CityChooser extends Component {
 
@@ -40,6 +41,12 @@ function mapDispatchToProps(dispatch) {
       Api.getWeatherForecast(dispatch, query);
     }
   }
+}
+
+CityChooser.propTypes = {
+  cityInputValue: Proptypes.string,
+  cityInputChanged: Proptypes.func,
+  citySubmit: Proptypes.func
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(CityChooser);
