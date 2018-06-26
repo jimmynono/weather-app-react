@@ -4,12 +4,15 @@ import constants from '../store/constants';
 import Api from '../helpers/api';
 
 class CityChooser extends Component {
+
   render() {
+    const { cityInputValue, citySubmit, cityInputChanged } = this.props;
+
     return (
       <div>
         <h1>Enter your city</h1>
-        <form onSubmit={(evt) => this.props.citySubmit(evt, this.props.cityInputValue)}>
-          <input value={this.props.cityInputValue || ''} onChange={this.props.cityInputChanged} />
+        <form onSubmit={(evt) => citySubmit(evt, cityInputValue)}>
+          <input value={cityInputValue || ''} onChange={cityInputChanged} />
         </form>
       </div>
     )
@@ -18,7 +21,6 @@ class CityChooser extends Component {
 
 function mapStateToProps(state) {
   return {
-    chosenCity: state.chosenCity,
     cityInputValue: state.cityInputValue
   }
 }

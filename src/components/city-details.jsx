@@ -6,11 +6,14 @@ import { connect } from 'react-redux';
 
 class CityDetails extends Component {
   render() {
+
+    const { hourlyData } = this.props;
+
     return (
       <div>
         <CurrentWeather showButton={false} />
         <FiveDayForecast />
-        <HourlyForecast hourlyData={this.props.hourlyData}/>
+        <HourlyForecast hourlyData={hourlyData}/>
       </div>
     );
   }

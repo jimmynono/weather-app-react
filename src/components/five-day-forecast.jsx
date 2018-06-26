@@ -5,11 +5,13 @@ import { connect } from 'react-redux';
 class FiveDayForecast extends Component {
   render() {
 
+    const { forecastData } = this.props;
+
     return (
       <div>
         <h1>Five Day Forecast</h1>
         <div className="five-day-forecast">
-          {this.props.forecastData && this.props.forecastData.map((forecastDayInfo, index) => {
+          {forecastData && forecastData.map((forecastDayInfo, index) => {
             return <ForecastCard {...forecastDayInfo} key={index} />
           })}
         </div>

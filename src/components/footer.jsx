@@ -3,9 +3,12 @@ import { connect } from 'react-redux';
 
 class Footer extends Component {
   render() {
+
+    const { userName } = this.props;
+
     return (
       <footer>
-        <h1>Hi there {this.props.userName}</h1>
+        <h1>Hi there {userName}</h1>
       </footer>
     )
   }

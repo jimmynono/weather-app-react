@@ -23,7 +23,13 @@ class ForecastCard extends Component {
   }
 
   render() {
-    const { lowTemp, highTemp, rainChance, icon, index } = this.props
+    const {
+      lowTemp,
+      highTemp,
+      rainChance,
+      icon,
+      index
+    } = this.props
 
     return (
       <div className="forecast-card">

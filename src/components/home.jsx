@@ -8,10 +8,12 @@ import { connect } from 'react-redux';
 class Home extends Component {
   render() {
 
+    const { chosenCity } = this.props;
+
     return (
       <div>
-        {!this.props.chosenCity && <CityChooser />}
-        {this.props.chosenCity && <div>
+        {!chosenCity && <CityChooser />}
+        {chosenCity && <div>
           <CurrentWeather showButton={true} />
           <FiveDayForecast />
         </div>}
