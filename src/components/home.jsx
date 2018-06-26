@@ -6,26 +6,14 @@ import FiveDayForecast from './five-day-forecast';
 import { connect } from 'react-redux';
 
 class Home extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isLoaded: false,
-      currentTemp: '',
-      cityName: ''
-    }
-  }
-
   render() {
-    const {
-        forecastDays
-      } = this.state;
 
     return (
       <div>
         {!this.props.chosenCity && <CityChooser />}
         {this.props.chosenCity && <div>
           <CurrentWeather showButton={true} />
-          <FiveDayForecast forecastData={forecastDays} />
+          <FiveDayForecast />
         </div>}
       </div>
     );

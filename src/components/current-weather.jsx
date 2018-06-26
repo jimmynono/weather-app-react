@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 import iconJSON from '../helpers/icons';
 
 class CurrentWeather extends Component {
-
   render() {
     const { showButton } = this.props;
 

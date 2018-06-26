@@ -40,7 +40,8 @@ const reducer = (state = initialState, action) => {
     case constants.UPDATE_CITY_NAME:
       return Object.assign({}, state, { weatherData: action.weatherData });
     case constants.CITY_FORECAST:
-      return Object.assign({}, state, {forecastInfo: action.forecastData})
+      return Object.assign({}, state, { forecastInfo: action.forecastData,
+                                        hourlyData: action.hourlyData });
     default:
       return state;
   }

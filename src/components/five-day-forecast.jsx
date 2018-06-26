@@ -3,7 +3,6 @@ import ForecastCard from './forecast-card';
 import { connect } from 'react-redux';
 
 class FiveDayForecast extends Component {
-
   render() {
 
     return (

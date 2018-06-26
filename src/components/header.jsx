@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import constants from '../store/constants';
 
 class Header extends Component {
-
   render () {
     return (
       <header className="App-header">
