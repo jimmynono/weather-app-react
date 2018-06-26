@@ -23,8 +23,11 @@ Once API key is created you will need to create a .env file in the project root 
 
 ```sh
 $ touch .env
-$ cat .env REACT_APP_SECRET_CODE=APIKEY
 ```
+
+open .env file in the text editor of your choice and add on one line
+
+`REACT_APP_SECRET_CODE=APIKEY`
 
 replace APIKEY with your personalized key.
 
