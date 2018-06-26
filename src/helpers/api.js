@@ -3,12 +3,12 @@ import iconJSON from './icons.json';
 import forecastBuilder from './utils';
 
 const urlPrefix = 'http://api.openweathermap.org/data/2.5/';
-const apiKey = '&APPID=5276ee07167d5c4e7737138a005c8e83';
+const apiKey = process.env.REACT_APP_SECRET_CODE;
 const units = '&units=imperial';
 const location = 'q=';
 
 function getWeatherData(dispatch, query) {
-  axios.get(urlPrefix + "weather?" + location + `${query}` + units + apiKey)
+  axios.get(urlPrefix + "weather?" + location + `${query}` + units + "&APPID=" + apiKey)
     .then((response) => {
       return response;
     })
@@ -18,7 +18,7 @@ function getWeatherData(dispatch, query) {
 }
 
 function getWeatherForecast(dispatch, query) {
-  axios.get(urlPrefix + "forecast?" + location + query + units + apiKey)
+  axios.get(urlPrefix + "forecast?" + location + query + units + "&APPID=" + apiKey)
   .then((response) => {
     return response;
   })
