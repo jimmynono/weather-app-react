@@ -16,6 +16,18 @@ Weather forecasting app, built with ReactJs. I used the OpenWeatherMap API for d
 
 This project was generated using the React CLI. To start the app.
 
+You will need to create your personalized API token at https://openweathermap.org/appid#get
+
+Once API key is created you will need to create a .env file in the project root, from there
+
+
+```sh
+$ cat .env
+REACT_APP_SECRET_CODE=APIKEY
+```
+
+replace APIKEY with your personalized key.
+
 ```sh
 $ npm install
 $ npm run start
