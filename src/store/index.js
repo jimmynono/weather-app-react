@@ -6,7 +6,7 @@ const initialState = {
   inputValue: '',
   userName: '',
   showInput: false,
-  chosenCity: 'Boston',
+  chosenCity: '',
   weatherData: {
     id: '',
     cityName: '',
