@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import ForecastCard from './forecast-card';
+import { connect } from 'react-redux';
+import Proptypes from 'prop-types';
 
 class FiveDayForecast extends Component {
-
   render() {
+
     const { forecastData } = this.props;
 
     return (
@@ -19,4 +21,15 @@ class FiveDayForecast extends Component {
   }
 }
 
-export default FiveDayForecast;
+function mapStateToProps(state) {
+  return {
+    forecastData: state.forecastInfo
+  }
+}
+
+FiveDayForecast.propTypes = {
+  forecastData: Proptypes.array
+}
+
+
+export default connect(mapStateToProps)(FiveDayForecast);

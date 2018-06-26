@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import HourlyCard from './hourly-card';
+import Proptypes from 'prop-types';
 
 class HourlyForecast extends Component {
 
@@ -15,6 +16,10 @@ class HourlyForecast extends Component {
       </div>
     )
   }
+}
+
+HourlyForecast.propTypes = {
+  hourlyData: Proptypes.array
 }
 
 export default HourlyForecast;

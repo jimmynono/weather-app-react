@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import moment from 'moment';
 import iconJSON from '../helpers/icons.json';
+import Proptypes from 'prop-types';
 
 class HourlyCard extends Component {
   constructor(props) {
@@ -16,7 +17,6 @@ class HourlyCard extends Component {
   }
 
   render() {
-    console.log(this.props);
     const { dt_txt,
             main: {
               temp,
@@ -48,6 +48,15 @@ class HourlyCard extends Component {
       </div>
     )
   }
+}
+
+HourlyCard.propTypes = {
+  dt_txt: Proptypes.string,
+  temp: Proptypes.string,
+  humidity: Proptypes.string,
+  pressure: Proptypes.string,
+  speed: Proptypes.string,
+  deg: Proptypes.string
 }
 
 export default HourlyCard;

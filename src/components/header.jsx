@@ -1,23 +1,34 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import constants from '../store/constants';
+import Proptypes from 'prop-types';
 
 class Header extends Component {
-
   render () {
+
+    const {
+      userName,
+      showInput,
+      inputValue,
+      submit,
+      inputChanged,
+      onLoginClick,
+      onLogoutClick
+    } = this.props;
+
     return (
       <header className="App-header">
         <div className="App-header-user-info">
-          {this.props.userName && <h2>Welcome: {this.props.userName}</h2>}
-          {!this.props.userName && <h2>Login Please</h2>}
-          {this.props.showInput  && <form onSubmit={this.props.submit}>
+          {userName && <h2>Welcome: {userName}</h2>}
+          {!userName && <h2>Login Please</h2>}
+          {showInput  && <form onSubmit={submit}>
             <label>
               Name:
-              <input value={this.props.inputValue || ''} onChange={this.props.inputChanged} />
+              <input value={inputValue || ''} onChange={inputChanged} />
             </label>
           </form>}
-          {!this.props.userName && <button onClick={this.props.onLoginClick}>LOGIN</button>}
-          {this.props.userName && <button onClick={this.props.onLogoutClick}>LOGOUT</button>}
+          {!userName && <button onClick={onLoginClick}>LOGIN</button>}
+          {userName && <button onClick={onLogoutClick}>LOGOUT</button>}
         </div>
         <div className="App-header-logo">
           <span className="wi wi-day-sunny App-logo" alt="logo" />
@@ -67,6 +78,17 @@ function mapDispatchToProps(dispatch) {
     }
 
   }
+}
+
+Header.propTypes = {
+  user: Proptypes.string,
+  inputValue: Proptypes.string,
+  userName: Proptypes.string,
+  showInput: Proptypes.bool,
+  onLoginClick: Proptypes.func,
+  onLogoutClick: Proptypes.func,
+  inputChanged: Proptypes.func,
+  submit: Proptypes.func
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);
