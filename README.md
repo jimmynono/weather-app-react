@@ -18,12 +18,12 @@ This project was generated using the React CLI. To start the app.
 
 You will need to create your personalized API token at https://openweathermap.org/appid#get
 
-Once API key is created you will need to create a .env file in the project root, from there
+Once API key is created you will need to create a .env file in the project root and add the key to it
 
 
 ```sh
-$ cat .env
-REACT_APP_SECRET_CODE=APIKEY
+$ touch .env
+$ cat .env REACT_APP_SECRET_CODE=APIKEY
 ```
 
 replace APIKEY with your personalized key.
