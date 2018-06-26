@@ -49,7 +49,7 @@ ForecastCard.propTypes = {
   highTemp: Proptypes.number,
   rainChance: Proptypes.number,
   icon: Proptypes.string,
-  index: Proptypes.string,
+  index: Proptypes.number,
 }
 
 export default ForecastCard;

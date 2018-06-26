@@ -13,7 +13,7 @@ class FiveDayForecast extends Component {
         <h1>Five Day Forecast</h1>
         <div className="five-day-forecast">
           {forecastData && forecastData.map((forecastDayInfo, index) => {
-            return <ForecastCard {...forecastDayInfo} key={index} />
+            return <ForecastCard {...forecastDayInfo} key={index} index={index} />
           })}
         </div>
       </div>
