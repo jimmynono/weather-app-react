@@ -1,6 +1,6 @@
 import axios from 'axios';
 import iconJSON from './icons.json';
-import forecastBuilder from './utils';
+import util from './utils';
 
 const urlPrefix = 'http://api.openweathermap.org/data/2.5/';
 const apiKey = process.env.REACT_APP_SECRET_CODE;
@@ -25,7 +25,7 @@ function getWeatherForecast(dispatch, query) {
   .then((data) => {
     dispatch({
       type: 'CITY_FORECAST',
-      forecastData: forecastBuilder(data.data, iconJSON),
+      forecastData: util.forecastBuilder(data.data, iconJSON),
       hourlyData: data.data.list
     });
   })

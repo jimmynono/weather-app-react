@@ -5,10 +5,12 @@ import Proptypes from 'prop-types';
 class Footer extends Component {
   render() {
 
-    const { userName } = this.props;
+    const { userName, hasCityLoaded } = this.props;
+
+    const style = !hasCityLoaded? "fixed" : null;
 
     return (
-      <footer>
+      <footer className={style}>
         <h1>Hi there {userName}</h1>
       </footer>
     )
@@ -17,7 +19,8 @@ class Footer extends Component {
 
 function mapStateToProps(state) {
   return {
-    userName: state.userName
+    userName: state.userName,
+    hasCityLoaded: state.weatherData.name
   }
 }
 

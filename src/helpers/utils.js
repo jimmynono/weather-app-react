@@ -1,4 +1,7 @@
-export default function forecastBuilder(res, iconJSON) {
+import moment from 'moment';
+import iconJSON from '../helpers/icons';
+
+export function forecastBuilder(res, iconJSON) {
     const days = [
       {
         lowTemp: null,
@@ -64,3 +67,22 @@ export default function forecastBuilder(res, iconJSON) {
 
     return days;
   }
+
+export function iconFinder(timeCode, weatherId) {
+  let hour = moment.utc(timeCode).utcOffset(moment().utcOffset()).hour();
+  var iconClass = 'wi wi-';
+  iconClass += (hour >= 5 && hour <= 20 ? 'day-' : '');
+  iconClass += (iconJSON[weatherId].icon);
+
+  return iconClass;
+}
+
+export function formatTimeCard(timeStamp) {
+  return moment.utc(timeStamp).utcOffset(moment().utcOffset()).format("dddd h a");
+}
+
+export default {
+  forecastBuilder,
+  iconFinder,
+  formatTimeCard
+}

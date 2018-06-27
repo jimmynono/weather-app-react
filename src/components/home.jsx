@@ -11,7 +11,7 @@ class Home extends Component {
     const { chosenCity } = this.props;
 
     return (
-      <div>
+      <div className="home-wrapper">
         {!chosenCity && <CityChooser />}
         {chosenCity && <div>
           <CurrentWeather showButton={true} />

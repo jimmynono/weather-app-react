@@ -63,6 +63,10 @@ button {
   to { transform: rotate(360deg); }
 }
 
+.home-wrapper {
+  padding: 2em 0;
+}
+
 .details-wrapper {
   padding: 2em 0;
 }
@@ -130,7 +134,12 @@ footer {
   background: #507381;
   min-height: 300px;
   padding: 2em;
-  margin-top: 2em;
+}
+
+.fixed {
+  width: 100%;
+  position: fixed;
+  bottom: 0;
 }
 
 @media screen and (max-width: 1024px) {
