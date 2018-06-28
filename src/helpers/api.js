@@ -10,7 +10,6 @@ function getWeatherData(dispatch, query) {
   fetch(urlPrefix + "weather?" + location + `${query}` + units + "&APPID=" + apiKey)
     .then(response =>  response.json())
     .then((data) => {
-      console.log(data);
       dispatch({type: 'UPDATE_CITY_NAME', weatherData: data})
     })
 }
@@ -27,11 +26,14 @@ function getWeatherForecast(dispatch, query) {
   })
 }
 
-function getMoonPhase() {
-  fetch('http://api.usno.navy.mil/moon/phase?date=7/4/2018&nump=12')
+function getMoonPhase(dispatch) {
+  fetch('http://api.usno.navy.mil/rstt/oneday?date=today&loc=Seattle, WA')
     .then(response => response.json())
-    .then(data => {
-      console.log(data);
+    .then((data) => {
+      dispatch({
+        type: 'GET_MOON_PHASE',
+        moonData: data
+      })
     })
 }
 

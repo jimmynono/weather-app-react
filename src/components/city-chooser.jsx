@@ -39,7 +39,7 @@ function mapDispatchToProps(dispatch) {
       evt.preventDefault();
       Api.getWeatherData(dispatch, query);
       Api.getWeatherForecast(dispatch, query);
-      Api.getMoonPhase();
+      Api.getMoonPhase(dispatch);
     }
   }
 }

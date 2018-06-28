@@ -19,6 +19,9 @@ const initialState = {
     },
     name: '',
     weather:[{"id": '800'}]
+  },
+  moonData: {
+    closestphase: ''
   }
 };
 
@@ -42,6 +45,8 @@ const reducer = (state = initialState, action) => {
     case constants.CITY_FORECAST:
       return Object.assign({}, state, { forecastInfo: action.forecastData,
                                         hourlyData: action.hourlyData });
+    case constants.GET_MOON_PHASE:
+      return Object.assign({}, state, { moonData: action.moonData });
     default:
       return state;
   }
