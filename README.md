@@ -38,6 +38,8 @@ $ npm install
 $ npm run start
 ```
 
+NOTE: this uses `fetch` to get data. If you use on Internet Explorer or older browsers you will need to swap out fetch and use the npm package `axios` to get data.
+
 ## Maintainers
 
 [@jimmynono](https://github.com/jimmynono)
