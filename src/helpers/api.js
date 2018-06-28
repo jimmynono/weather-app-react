@@ -1,4 +1,3 @@
-import axios from 'axios';
 import iconJSON from './icons.json';
 import util from './utils';
 
@@ -8,30 +7,36 @@ const units = '&units=imperial';
 const location = 'q=';
 
 function getWeatherData(dispatch, query) {
-  axios.get(urlPrefix + "weather?" + location + `${query}` + units + "&APPID=" + apiKey)
-    .then((response) => {
-      return response;
-    })
+  fetch(urlPrefix + "weather?" + location + `${query}` + units + "&APPID=" + apiKey)
+    .then(response =>  response.json())
     .then((data) => {
-      dispatch({type: 'UPDATE_CITY_NAME', weatherData: data.data})
+      console.log(data);
+      dispatch({type: 'UPDATE_CITY_NAME', weatherData: data})
     })
 }
 
 function getWeatherForecast(dispatch, query) {
-  axios.get(urlPrefix + "forecast?" + location + query + units + "&APPID=" + apiKey)
-  .then((response) => {
-    return response;
-  })
+  fetch(urlPrefix + "forecast?" + location + query + units + "&APPID=" + apiKey)
+  .then(response => response.json())
   .then((data) => {
     dispatch({
       type: 'CITY_FORECAST',
-      forecastData: util.forecastBuilder(data.data, iconJSON),
-      hourlyData: data.data.list
+      forecastData: util.forecastBuilder(data, iconJSON),
+      hourlyData: data.list
     });
   })
 }
 
+function getMoonPhase() {
+  fetch('http://api.usno.navy.mil/moon/phase?date=7/4/2018&nump=12')
+    .then(response => response.json())
+    .then(data => {
+      console.log(data);
+    })
+}
+
 export default {
   getWeatherData,
-  getWeatherForecast
+  getWeatherForecast,
+  getMoonPhase
 };
